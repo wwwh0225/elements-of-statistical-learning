@@ -100,8 +100,7 @@ points(gd, pch=".", cex=1.2, col=ifelse(prob_linear>0.5, "orange", "cornflowerbl
 box()
 ```
 
-![](ch2_files/figure-gfm/linear-1.png)<!-- -->
-
+![](https://ppt.cc/foqR5x@.png)
 ### KNN 演算法
 
 KNN(K Nearest Neighbors)演算法的觀念相當簡單，也就是找出各資料點最近的
@@ -161,12 +160,12 @@ points(gd, pch=".", cex=1.2, col=ifelse(prob15>0.5, "orange", "cornflowerblue"))
 box()
 ```
 
-![](ch2_files/figure-gfm/knn-1.png)<!-- -->
+![](https://ppt.cc/fxNk1x@.png)
 
 而我們也可來看看一個極端的例子，也就是當 ![k=1](https://latex.codecogs.com/png.latex?k%3D1
 "k=1") 時，模仿上面的方法，我們可得到下圖：
 
-![](ch2_files/figure-gfm/1nn-1.png)<!-- -->
+![](https://ppt.cc/fVr5px@.png)
 
 我們可以統整 KNN 演算法為有 ![N/k](https://latex.codecogs.com/png.latex?N%2Fk
 "N/k") 個參數(parameters)，可以想成此分群共有
