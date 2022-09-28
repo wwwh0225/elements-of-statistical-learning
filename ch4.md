@@ -16,7 +16,7 @@ output:
 
 
 ## Linear Regression of an Indicator Matrix
-若我們說，$\mathcal{G}$ 有 $K$ 個類別，為了表示該筆資料是何種類別，我們可以建立一個 $Y$ 矩陣, $Y=(Y_1,...,Y_k)_{N \times K}$，也就是說 $Y$ 矩陣中有 $N$ 個 $K$ 維的 row vectors。而根據線性迴歸模型，我們可得對 $Y$ 的估計為：
+若我們說， $\mathcal{G}$ 有 $K$ 個類別，為了表示該筆資料是何種類別，我們可以建立一個 $Y$ 矩陣, $Y=(Y_1,...,Y_k)_{N \times K}$，也就是說 $Y$ 矩陣中有 $N$ 個 $K$ 維的 row vectors。而根據線性迴歸模型，我們可得對 $Y$ 的估計為：
 
 $$ \hat{Y}  = X(X^TX)^{-1}X^TY=X \hat{B} $$
  
@@ -65,8 +65,8 @@ $$\begin{aligned}
 線性判別函數如下所示：
 $$\delta_k(x)=x^T\Sigma^{-1}\mu_k-\frac{1}{2}\mu_k^T \Sigma^{-1}\mu_k +\ln \pi_k$$
 
-線性判別函數的推導來自以下的成比例關係
-：
+線性判別函數的推導來自以下的成比例關係：
+
 $$\begin{aligned}
 P(G=k|X=x)&\propto f_k(x)\pi_k \\
 &\propto -\frac{1}{2}(x-\mu_k)^T \Sigma^{-1} (x-\mu_k)+\ln \pi_k = -\frac{1}{2}x^T\Sigma^{-1}x+x^T\Sigma^{-1}\mu_k-\frac{1}{2}\mu_k^T \Sigma^{-1}\mu_k +\ln \pi_k\\
@@ -80,6 +80,7 @@ P(G=k|X=x)&\propto f_k(x)\pi_k \\
  &\hat{\mu_k}=\sum_{g_i=k}x_i/N_k \\
  &\hat{\Sigma}=\sum_{k=1}^K\sum_{g_i=k}(x_i-\hat{\mu_k})(x_i-\hat{\mu_k})^T/(N-K)
 \end{aligned}$$
+
 其中 $N_k$ 是類別$k$在訓練集中的數量(observations)。
 
 ### 2-class LDA (from Ex. 4.2)
@@ -122,21 +123,28 @@ $$ \begin{bmatrix}
 \hat{\beta}
 \end{bmatrix}=(X^TX)^{-1}X^Ty $$
 
-其中 **designed matrix** 可這樣表示：($X$裡面有$\bf{1}$向量)
+其中 **designed matrix** 可這樣表示：( $X$ 裡面有 $\bf{1}$ 向量)
 
 $$X^TX=\begin{bmatrix}
 N & \sum_{i=1}^N x_i^T\\ 
 \sum_{i=1}^N x_i & \sum_{i=1}^Nx_ix_i^T 
 \end{bmatrix}$$
+
 其中
+
 $$\sum_{i=1}^Nx_i =\sum_{i=1}^{N_1}x_i+\sum_{i=1}^{N_2}x_i = N_1\hat{\mu_1}+ N_2\hat{\mu_2}$$
+
 又知
+
 $$\begin{aligned}
 \hat{\Sigma} &= \frac{1}{N-2}\sum_{k=1}^2\sum_{g_i=k}(x_i-\hat{\mu_k})(x_i-\hat{\mu_k})^T \\
 &=\frac{1}{N-2}[\sum_{g_i=1}x_ix_i^T-N_1 \mu_1 \mu_1^T+\sum_{g_i=2}x_ix_i^T-N_2\mu_2 \mu_2^T]
 \end{aligned}$$
+
 因此
+
 $$\sum_{i=1}^Nx_ix_i^T = (N-2)\hat{\Sigma}+N_1 \mu_1 \mu_1^T+N_2\mu_2 \mu_2^T$$
+
 若我們將屬於類別1的資料放在矩陣的前 $N_1$ 個，而類別2的資料 $N_2$ 個緊接在後，$X^Ty$ 可以寫成：
 
 $$ X^Ty= \begin{bmatrix}
@@ -157,21 +165,24 @@ N/N_2
 
 整理先前計算出的這些東西代入 Normal equation，整理後可得：
 
-(註：$\beta_0=(-\frac{N_1}{N}\mu_1^T-\frac{N_2}{N}\mu_2^T)\beta$)
+(註： $\beta_0=(-\frac{N_1}{N}\mu_1^T-\frac{N_2}{N}\mu_2^T)\beta$ )
 
 $$(N_1\mu_1+N_2\mu_2)(-\frac{N_1}{N}\mu_1^T-\frac{N_2}{N}\mu_2^T)\beta+((N-2)\hat{\Sigma} +N_1\mu_1\mu_1^T+N_2\mu_2\mu_2^T)\beta=N(\mu_2-\mu_1)$$
 
 經過一些運算，並引入題目對 $\hat{\Sigma_B}$ 的定義，即可得：
+
 $$[(N-2)\hat{\Sigma}+N\hat{\Sigma}_B]\beta=N(\hat{\mu_2}-\hat{\mu_1})$$
 
 
 **(c) Hence show that $\hat{\Sigma}_B \beta$ is in the direction $(\hat{\mu_2} - \hat{\mu_1})$ and thus**
+
 $$\hat{\beta}\propto \hat{\Sigma}^{-1} (\hat{\mu_2} - \hat{\mu_1})$$
+
 **Therefore the least-squares regression coefficient is identical to the LDA coefficient, up to a scalar multiple.**
 
 *Sol:*
 
-若我們直接計算 $\hat{\Sigma}_B \beta$，由於 $(\hat{\mu_2}-\hat{\mu_1})^T \beta$ 內積後是一個scalar。也就是
+若我們直接計算 $\hat{\Sigma}_B \beta$ ，由於 $(\hat{\mu_2}-\hat{\mu_1})^T \beta$  內積後是一個scalar。也就是
 
 $$\hat{\Sigma}_B \beta=\frac{N_1N_2}{N^2}(\hat{\mu_2}-\hat{\mu_1}){\color{Red} (\hat{\mu_2}-\hat{\mu_1})^T \beta}=\frac{N_1N_2}{N^2}(\hat{\mu_2}-\hat{\mu_1}){\color{Red} c}$$
 
@@ -192,6 +203,7 @@ $$ \hat{\beta} \propto \hat{\Sigma}^{-1} (\hat{\mu_2}-\hat{\mu_1}) $$
 *Sol:*
 
 在先前的討論，我們知道：
+
 $$\beta_0 = -\frac{1}{N}(N_1\hat{\mu}^T_1+N_2\hat{\mu}^T_2)\hat{\beta}$$
 
 我們可改寫 $\hat{f}(x)$ 如下：
@@ -231,6 +243,7 @@ $$\hat{\Sigma}_k(\alpha)=\alpha \hat{\Sigma}_k+(1-\alpha)\hat{\Sigma},\ \alpha \
 在此， $\hat{\Sigma}$ 是LDA所做的共變數矩陣，而 $\hat{\Sigma}_k$ 為QDA的共變數矩陣。
 
 by 課本 
+
 $$\hat{\Sigma}(\gamma)=\gamma\hat{\Sigma}+(1-\gamma)\hat{\sigma}^2I$$
 
 ## LDA 的計算
@@ -245,6 +258,7 @@ $$\hat{\Sigma}(\gamma)=\gamma\hat{\Sigma}+(1-\gamma)\hat{\sigma}^2I$$
 
 *Sol:*
 根據題意，我們知道 $x \in \mathbb{R}^p$ 和 $y \in \mathbb{R}^k$ ，且：
+
 $$\begin{aligned} 
 & \hat{y}=\hat{\mathbf{B}}x \\
 & \mathbf{\hat{Y}} = \mathbf{X} \hat{\mathbf{B}}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}
@@ -257,8 +271,10 @@ $$\begin{aligned}
 & \hat{\mu_k} = \mathbf{B}^T\mu_k
 \end{aligned}$$
 
-若我們定義 $\mathbf{X}$ 的共變數矩陣為 ${\Sigma}$ ，則 $\hat{\mathbf{Y}}$的共變數矩陣則為：
+若我們定義 $\mathbf{X}$ 的共變數矩陣為 ${\Sigma}$ ，則 $\hat{\mathbf{Y}}$ 的共變數矩陣則為：
+
 $$\hat{\Sigma} = \mathbf{B}^T \Sigma \mathbf{B}$$
+
 其中
 
 $$\begin{aligned} 
@@ -322,8 +338,10 @@ P(G=K|X=x) &= 1-\sum_{l=1}^{K-1}P(G=l|X=x)\\&=1-P(G=K|X=x)\sum_{l=1}^{K-1}e^{\be
 \end{aligned} $$
 
 故可求解出：
+
 $$P(G=K|X=x) = \frac{1}{1+\sum_{l=1}^{K-1}e^{\beta_{l0}+\beta_l^Tx} } $$
 以及, 
+
 $$P(G=k|X=x) = \frac{e^{\beta_{k0}+\beta_k^Tx} }{1+\sum_{l=1}^{K-1}e^{\beta_{l0}+\beta_l^Tx} }$$
 
 若我們簡化表示，將這些參數定義為：
@@ -343,9 +361,11 @@ $$L = \prod _{i=1}^Np_{g_i}(x_i)$$
 $$l=\sum _{i=1}^N \ln p_{g_i}(x_i)$$
 
 若我們只先看 $K=2$ 的情形，則：(可參考課本4.4.1)
+
 $$l(\beta) = \sum_{i=1}^N\{y_i\beta^Tx_i -\ln(1+e^{\beta^Tx_i})  \}$$
 
 我們求解 log-likelihood 的極值，另一階導數為0：
+
 $$\frac{\partial l(\beta)}{\partial \beta} = \sum_{i=1}^N x_i(y_i-p(x_i;\beta))=0$$
 
 其中 $p(x_i;\beta) = \frac{e^{\beta^Tx}}{1+e^{\beta^Tx}}$ 。
@@ -361,6 +381,7 @@ $$\frac{\partial^2 l(\beta)}{\partial \beta\beta^T} = -\mathbf{X}^T\mathbf{WX}$$
 - \mathbf{W} 是第 $i$ 個元素是 $p(x_i;\beta^{old})(1-p(x_i;\beta^{old}))$ 的對角矩陣。
 
 由於此問題的一階條件沒有 closed-form，因此我們使用**牛頓法**找根：
+
 $$\begin{aligned} 
 \beta^{new} &= \beta^{old} + (\mathbf{W}^T\mathbf{WX})^{-1}\mathbf{X}^T(\mathbf{y}-\mathbf{p})\\
 &= (\mathbf{W}^T\mathbf{WX})^{-1}\mathbf{X}^T\mathbf{W}(\mathbf{X}\beta^{old}+\mathbf{W}^{-1}(\mathbf{y}-\mathbf{p}))\\
@@ -390,14 +411,16 @@ $$y_i =\left\{\begin{matrix}
 \end{matrix}\right.$$
 
 我們考慮最基本的一維羅吉斯回歸模型，的對數概似函數：
+
 $$l(\beta) = \sum_{i=1}^N\{y_i\beta^Tx_i -\ln(1+e^{\beta^Tx_i})  \}$$
 故
+
 $$\begin{aligned}
 l(\beta) &= \sum_{i=1}^N\{y_i(\beta_0+\beta_1x_i) -\ln(1+e^{(\beta_0+\beta_1x_i)})  \} \\
 &=\sum_{y_i=0}[-\ln(1+e^{(\beta_0+\beta_1x_i)})]+\sum_{y_i=1}[(\beta_0+\beta_1x_i)-\ln(1+e^{(\beta_0+\beta_1x_i)})]
  \end{aligned}$$
 
-若我們想要 **maximize log-likelihood**，很明顯地，當 $\beta \rightarrow \infty$ 時就會發散，這導致我們無法找到一個 closed-form 的解。
+若我們想要 **maximize log-likelihood**，很明顯地，當 $\beta \rightarrow \infty$  時就會發散，這導致我們無法找到一個 closed-form 的解。
 
 但很直觀地，當$x \in \mathbb{R}$，由於資料只有一維，那我們在 x 軸上找到 $x=x_0$ ，並在此處畫上一條垂直於 x 軸的線，這樣就能夠明確地劃分出兩個分類。
 
