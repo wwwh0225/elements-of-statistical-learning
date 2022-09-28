@@ -16,15 +16,15 @@ output:
 
 
 ## Linear Regression of an Indicator Matrix
-若我們說，$\mathcal{G}$ 有 $K$ 個類別，為了表示該筆資料是何種類別，我們可以建立一個 $Y$ 矩陣, $Y=(Y_1,...,Y_k)_{N \times K}$，也就是說$Y$矩陣中有$N$個$K$維的 row vectors。而根據線性迴歸模型，我們可得對 $Y$的估計為：
+若我們說，$\mathcal{G}$ 有 $K$ 個類別，為了表示該筆資料是何種類別，我們可以建立一個 $Y$ 矩陣, $Y=(Y_1,...,Y_k)_{N \times K}$，也就是說 $Y$ 矩陣中有 $N$ 個 $K$ 維的 row vectors。而根據線性迴歸模型，我們可得對 $Y$ 的估計為：
 
 $$ \hat{Y}  = X(X^TX)^{-1}X^TY=X \hat{B} $$
  
 $B_{(p+1)\times K}$：$p$ 個 inputs 然後加上截距項。
 
-或者是從另外一個觀點，也就是我們希望極小化$\hat{y}$跟 $y$的距離。
+或者是從另外一個觀點，也就是我們希望極小化 $\hat{y}$ 跟 $y$ 的距離。
 $$\min_{\bf{B}}\sum_{i=1}^N||y_i-[(1,x_i^T) \textbf{B} ]^T ||^2$$
-也就是說，$\hat{f}(x)$會分類到最接近的目標群( $y_i=t_k,\ if\ g_i = k$ )：
+也就是說， $\hat{f}(x)$ 會分類到最接近的目標群( $y_i=t_k,\ if\ g_i = k$ )：
 
 
 $$\hat{G}(x)=\mathop{\arg\min}\limits_{k}||\hat{f}(x)-t_k||^2$$
@@ -33,25 +33,25 @@ https://esl.hohoweiya.xyz/notes/LDA/sim-4-3/index.html
 
 ## Linear Discriminant Analysis(LDA)
 
-在課本的2.4節，我們知道在做分類決策時，我們是在極大化某種後驗機率(posrerior probability)，也就給定$X=x$時，找一個最大可能性的分類當作分析的結果。
+在課本的2.4節，我們知道在做分類決策時，我們是在極大化某種後驗機率(posrerior probability)，也就給定 $X=x$ 時，找一個最大可能性的分類當作分析的結果。
 也就是說：
-我們令分類所做的預測 $\hat{G}(x)=\mathcal{G}_k$ ($\mathcal{G}_k$為其中一種分類)；
-也就表示，當給定$X=x$的條件機率之下，$\mathcal{G}_k$是最有可能的出象，換成數學的語言就是：
-$P(\mathcal{G}_k|X=x)=\max_{l}P(G=\mathcal{G}_l|X=x)$ 
-（或者說是 $=\max_{l}P(G=l|X=x)$）
+我們令分類所做的預測 $\hat{G}(x)=\mathcal{G}_k$  ( $\mathcal{G}_k$ 為其中一種分類)；
+也就表示，當給定 $X=x$ 的條件機率之下， $\mathcal{G}_k$ 是最有可能的出象，換成數學的語言就是：
+ $P(\mathcal{G}_k|X=x)=\max_{l}P(G=\mathcal{G}_l|X=x)$  
+（或者說是 $=\max_{l}P(G=l|X=x)$ ）
 
-有這個基本觀念後，我們設定資料屬於類別$k$的先驗機率為：$\pi_k=P(G=k)$，而當然 $\sum_{k=1}^K\pi_k =1$。
+有這個基本觀念後，我們設定資料屬於類別 $k$ 的先驗機率為： $\pi_k=P(G=k)$ ，而當然  $\sum_{k=1}^K\pi_k =1$。
 
 而透過貝氏定理，我們可以得到以下關係：
 
-$$P(G=k|X=x)=\frac{{\color{Red} f_k(x)}{\color{Blue} \pi_k}}{{\color{DarkOrange} \sum_{l=1}^k f_l(x)\pi_l}}=\frac{{\color{Red} P(X|G=k)}{\color{Blue} P(G=k)} }{{\color{DarkOrange} \sum_l P(X|G=l)P(G=l)}}$$
+$$P(G=k|X=x)=\frac{{\color{Red} f_k(x)}{\color{Blue} \pi_k}}{{\color{DarkOrange} \Sigma_{l=1}^k f_l(x)\pi_l}}=\frac{{\color{Red} P(X|G=k)}{\color{Blue} P(G=k)} }{{\color{DarkOrange} \Sigma_l P(X|G=l)P(G=l)}}$$
 
-根據上式，我們必須對$f_k(x)$做一些假設，這也就是當資料是第$k$類時，$X$的機率密度函數。我們設定各分類的機率密度服從「**多變量常態分配(Multivariate Normal Distribution)**」。
+根據上式，我們必須對 $f_k(x)$ 做一些假設，這也就是當資料是第 $k$ 類時， $X$ 的機率密度函數。我們設定各分類的機率密度服從「**多變量常態分配(Multivariate Normal Distribution)**」。
 
 $$f_k(x)=\frac{1}{(2\pi)^{\frac{p}{2}}|\Sigma_k|^\frac{1}{2}}e^{-\frac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k)}$$
 要注意的是，在LDA的架構之下，所有類別的pdf均享有相同的共變數矩陣，也就是 $\Sigma_k=\Sigma,\forall k$。
 
-接著，我們就可以以去比較兩兩類別之間的後驗發生機率$P(G|X)$，我們在此利用對數的良好性質來分析兩者關係，假設我們現在要探討類別$k$和類別$l$，誰的發生機率大呢？我們用下列關係式來表達：
+接著，我們就可以以去比較兩兩類別之間的後驗發生機率 $P(G|X)$ ，我們在此利用對數的良好性質來分析兩者關係，假設我們現在要探討類別 $k$ 和類別 $l$ ，誰的發生機率大呢？我們用下列關係式來表達：
 
 $$\begin{aligned}
 \ln\frac{P(G=k|X=x)}{P(G=l|X=x)}&=\ln \frac{f_k(x)\pi_k}{f_l(x)\pi_l}=\ln\frac{\pi_k}{\pi_l}+\ln {f_k(x)}-\ln{f_l(x)}\\
@@ -59,9 +59,9 @@ $$\begin{aligned}
 &=\ln\frac{\pi_k}{\pi_l}-\frac{1}{2}(\mu_k+\mu_l)^T\Sigma^{-1}(\mu_k-\mu_l)+x^T\Sigma^{-1}(\mu_k-\mu_l)
 \end{aligned}$$
 
-注意!這樣良好的線性性質是來自於我們假設兩個分類具有**相同的**共變異數矩陣。若我們對類別$k$和類別$l$的分界線感興趣，其分界線就是位在兩者機率密度相等之處，也就是當上式**等於0**時。
+注意!這樣良好的線性性質是來自於我們假設兩個分類具有**相同的**共變異數矩陣。若我們對類別 $k$ 和類別 $l$ 的分界線感興趣，其分界線就是位在兩者機率密度相等之處，也就是當上式**等於0**時。
 
-透過相同的想法，我們可以建立一個**線性判別函數(linear discriminant function)**$\delta_k(x)$，來決定該資料應被分配到哪一個類別，也就是$G(x)=\mathop{\arg\max}\limits_{k}\delta_k(x)$。
+透過相同的想法，我們可以建立一個**線性判別函數(linear discriminant function)** $\delta_k(x)$ ，來決定該資料應被分配到哪一個類別，也就是 $G(x)=\mathop{\arg\max}\limits_{k}\delta_k(x)$ 。
 線性判別函數如下所示：
 $$\delta_k(x)=x^T\Sigma^{-1}\mu_k-\frac{1}{2}\mu_k^T \Sigma^{-1}\mu_k +\ln \pi_k$$
 
