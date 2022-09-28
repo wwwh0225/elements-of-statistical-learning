@@ -65,7 +65,8 @@ $$\begin{aligned}
 線性判別函數如下所示：
 $$\delta_k(x)=x^T\Sigma^{-1}\mu_k-\frac{1}{2}\mu_k^T \Sigma^{-1}\mu_k +\ln \pi_k$$
 
-線性判別函數的推導來自以下的成比例關係：
+線性判別函數的推導來自以下的成比例關係
+：
 $$\begin{aligned}
 P(G=k|X=x)&\propto f_k(x)\pi_k \\
 &\propto -\frac{1}{2}(x-\mu_k)^T \Sigma^{-1} (x-\mu_k)+\ln \pi_k = -\frac{1}{2}x^T\Sigma^{-1}x+x^T\Sigma^{-1}\mu_k-\frac{1}{2}\mu_k^T \Sigma^{-1}\mu_k +\ln \pi_k\\
@@ -92,10 +93,12 @@ $$x^T\hat{\Sigma^{-1}}(\hat{\mu_2}-\hat{\mu_1}) > \frac{1}{2}(\hat{\mu_2}+\hat{\
 *Sol:*
 
 在二元的分類中，我們可以回溯到先前講到的log-odds的觀念，也就是建立此式來做比較(改寫自課本式4.9)：
+
 $$\begin{aligned}
 \ln\frac{P(G=2|X=x)}{P(G=1|X=x)}
 =\ln\frac{\pi_2}{\pi_1}-\frac{1}{2}(\mu_2+\mu_1)^T\Sigma^{-1}(\mu_2-\mu_1)+x^T\Sigma^{-1}(\mu_2-\mu_1)
 \end{aligned}$$
+
 根據對數性質，若此式**大於0**，就表示 $P(G=2|X=x)$ 的機率相對於 $P(G=1|X=x)$ 來得高，故我們自然會將其分類到 class 2。
 而我們根據訓練集對上式做估計並且做些許代數運算即可得到決策的函數：
 $$x^T\hat{\Sigma^{-1}}(\hat{\mu_2}-\hat{\mu_1}) > \frac{1}{2}(\hat{\mu_2}+\hat{\mu_1})\hat{\Sigma^{-1}}(\hat{\mu_2}-\hat{\mu_1})-\ln(N_2/N_1)$$
