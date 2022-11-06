@@ -10,7 +10,4 @@
 
 在學習機器學習時，很多人都是使用套件產出結果，而並沒有更深度的理解模型背後之理論基礎，但其實統計與機器學習的理論包含了統計學、線性代數、最佳化等學科的概念在其中，小弟我希望能藉著課程學習以及複習的機會記錄自己的學習歷程，除了將理論部分換一種白話的方式呈現，並且適時輔以其他資料補充觀念，也會將部分課本習題以及程式模擬的程式碼一併以 Jupyter Notebook 的形式呈現，其中會交叉使用 `R` 語言與 `Python`，在文中會清楚地描述是使用何種語言撰寫，請各位讀者放心。
 
-![](https://scontent.ftpe9-1.fna.fbcdn.net/v/t39.30808-6/312810144_3069255036698841_3876641830977744087_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0debeb&_nc_ohc=kkluetIEdYoAX89vLGA&_nc_ht=scontent.ftpe9-1.fna&oh=00_AfAf74zAUa9sar2FRRE1Dp_DapZSBsDjdtY4FA4gJAA8bA&oe=636C9E7F)
-
-
-
+<img src="[https://user-images.githubusercontent.com/13688320/51331586-095cf300-1ab5-11e9-9a21-b9ec2902d9ec.png](https://scontent.ftpe9-1.fna.fbcdn.net/v/t39.30808-6/312810144_3069255036698841_3876641830977744087_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0debeb&_nc_ohc=kkluetIEdYoAX89vLGA&_nc_ht=scontent.ftpe9-1.fna&oh=00_AfAf74zAUa9sar2FRRE1Dp_DapZSBsDjdtY4FA4gJAA8bA&oe=636C9E7F)" alt="drawing" width="500"/>
