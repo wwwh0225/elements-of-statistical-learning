@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.245">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>統計學習理論 – sec5.5</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">統計學習理論</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/statlearn.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">統計學習理論</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Chapter 2.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch2/Sec2.3.html" class="sidebar-item-text sidebar-link">2.3 Two Simple Approaches to Prediction</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Chapter 4.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch4/Sec4.2.html" class="sidebar-item-text sidebar-link">4.2 Linear Regression of an Indicator Matrix</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch4/Sec4.3.html" class="sidebar-item-text sidebar-link">4.3 Linear Discriminant Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch4/Sec4.4.html" class="sidebar-item-text sidebar-link">4.4 Logistic Regression</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Chapter 5.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.1.html" class="sidebar-item-text sidebar-link">5.1 Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.2.html" class="sidebar-item-text sidebar-link">5.2 Piecewise Polynomials and Spl</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.4.html" class="sidebar-item-text sidebar-link">5.4 Smoothing Splines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.5.html" class="sidebar-item-text sidebar-link active">5.5 Automatic Selection of the Smoothing Parameters</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Chapter 14.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch14/Sec14.5.html" class="sidebar-item-text sidebar-link">14.5 Principal Components, Curves and Surfaces</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#自由度與-smoother-matrices" id="toc-自由度與-smoother-matrices" class="nav-link active" data-scroll-target="#自由度與-smoother-matrices">自由度與 Smoother Matrices</a>
+  <ul class="collapse">
+  <li><a href="#reinsch-form-的推導-from-ex.-5.9" id="toc-reinsch-form-的推導-from-ex.-5.9" class="nav-link" data-scroll-target="#reinsch-form-的推導-from-ex.-5.9">Reinsch form 的推導 (from Ex. 5.9)</a></li>
+  <li><a href="#lambda-的選擇" id="toc-lambda-的選擇" class="nav-link" data-scroll-target="#lambda-的選擇"><span class="math inline">\(\lambda\)</span> 的選擇</a></li>
+  <li><a href="#nonparametric-logistic-regression" id="toc-nonparametric-logistic-regression" class="nav-link" data-scroll-target="#nonparametric-logistic-regression">Nonparametric Logistic Regression</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/wwwh0225/elements-of-statistical-learning/blob/main/Ch5/Sec5.5.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/wwwh0225/elements-of-statistical-learning/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<p><a href="https://colab.research.google.com/github/wwwh0225/elements-of-statistical-learning/blob/main/Ch5.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<section id="自由度與-smoother-matrices" class="level1">
+<h1>自由度與 Smoother Matrices</h1>
+<p>在先前的討論，我們尚未提到 smoothing spline 自由度的問題，若我們有預先決定好的(pre-chosen) <span class="math inline">\(\lambda\)</span> ，所求出的 <span class="math inline">\(\mathbf{\hat{f}}\)</span> 就會是 <span class="math inline">\(\mathbf{y}\)</span> 的一種線性組合，故稱 linear smoother 。</p>
+<p><span class="math display">\[\begin{aligned}
+\mathbf{\hat{f}} &amp;= \mathbf{N}(\mathbf{N}^T\mathbf{N}+\lambda\mathbf{\Omega_N})^{-1}\mathbf{N}^T\mathbf{y} \\
+&amp;=  \mathbf{S_\lambda y}
+\end{aligned}\]</span></p>
+<p>我們稱 <span class="math inline">\(\mathbf{S_\lambda}\)</span> 為 <strong>smoother matrix</strong>。</p>
+<p>(顯而易見地， <span class="math inline">\(\mathbf{S_\lambda}\)</span> 與 <span class="math inline">\(x_i\)</span> 和 <span class="math inline">\(\lambda\)</span> 有關 )</p>
+<p>而我們再來看到 cubic spline 對函數 <span class="math inline">\(f\)</span> 的估計，我們令 <span class="math inline">\(\mathbf{B_\xi}\)</span> 是一個 <span class="math inline">\(X \times M\)</span> 的矩陣，表示 M 個 cubic-spline basis functions，且一共有 N 個訓練點，並以 <span class="math inline">\(\xi\)</span> 表達 knots 的序列，以及 <span class="math inline">\(M\ll N\)</span> (確保不會有奇異矩陣)。</p>
+<p><embed src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%20%5Cmathbf%7B%5Chat%7Bf%7D%7D%20%26%3D%20%5Cmathbf%7BB_%5Cxi%28B_%5Cxi%5ETB_%5Cxi%29%5E%7B-1%7DB_%5Cxi%5ETy%7D%20%5C%5C%20%26%3D%20%5Cmathbf%7BH_%5Cxi%20y%7D%20%5Cend%7Baligned%7D" class="img-fluid"></p>
+<p>從上述結果可以看出 <span class="math inline">\(\mathbf{H_\xi}\)</span> 是個投影矩陣，具備以下性質</p>
+<ul>
+<li>對稱、半正定</li>
+<li>自乘不變，也就是 <span class="math inline">\(\mathbf{H_\xi}\mathbf{H_\xi}=\mathbf{H_\xi}\)</span></li>
+</ul>
+<p>(另外 <span class="math inline">\(rank(\mathbf{H_\xi})=M\)</span> 、 <span class="math inline">\(rank(\mathbf{S_\lambda})=N\)</span> )</p>
+<p><span class="math inline">\(\mathbf{H_\xi}\)</span> 提供了維度，也讓我們知道會需要幾個 basis function 。</p>
+<p>我們說 smoothing spline 的 effective degrees of freedom 為：</p>
+<p><span class="math display">\[df_\lambda = trace(\mathbf{S_\lambda})\]</span></p>
+<p>由於 <span class="math inline">\(\mathbf{S_\lambda}\)</span> 是對稱切半正定矩陣，故其擁有時數的特徵值，我們可以對它進行特徵分界 (Eigendecomposition)，而為了較好地分解，我們可將 <span class="math inline">\(\mathbf{S_\lambda}\)</span> 先改寫成所謂 <strong>Reinsch form</strong> 。</p>
+<section id="reinsch-form-的推導-from-ex.-5.9" class="level3">
+<h3 class="anchored" data-anchor-id="reinsch-form-的推導-from-ex.-5.9">Reinsch form 的推導 (from Ex. 5.9)</h3>
+<p><strong>Derive the Reinsch form <span class="math inline">\(\mathbf{S_\lambda} = (\mathbf{I} + \lambda \mathbf{K})^{-1}\)</span> for the smoothing spline.</strong></p>
+<p><span class="math inline">\(\mathbf{N}\)</span> 是一個 <span class="math inline">\(N \times N\)</span> 的方陣，對其做奇異值分解 <span class="math inline">\(\mathbf{N} = UDV^T\)</span> ， <span class="math inline">\(U\)</span> 是正交矩陣 <span class="math inline">\(U^{-1}=U^T\)</span> 且因為 <span class="math inline">\(\mathbf{N}\)</span> 是 full-rank ，故 <span class="math inline">\(D\)</span> 也可以取反矩陣，因此</p>
+<p><span class="math display">\[\begin{aligned}
+\mathbf{S_\lambda} &amp;= UDV^T(VD^2V^T+\lambda\mathbf{\Omega_N})^{-1}VDU^T \\
+&amp;=U(D^{-1}V^TVD^2V^TVD^{-1}+\lambda D^{-1}V^T\mathbf{\Omega_N}VD^{-1})^{-1}U^T \\
+&amp;= U(I+\lambda D^{-1}V^T \mathbf{\Omega_N} VD^{-1})^{-1}U^T\\
+&amp;= (U^TU+\lambda U^TD^{-1}V^T\mathbf{\Omega_N}VD^{-1}U)^{-1}\\
+&amp;= (I+\lambda \underbrace{  U^TD^{-1}V^T\mathbf{\Omega_N}VD^{-1}U }_{\mathbf{K}})^{-1} \\
+&amp;= (I+\lambda \mathbf{K})^{-1}
+\end{aligned} \]</span></p>
+<hr>
+<p>根據上面所求得的結果， 可以發現 <span class="math inline">\(\mathbf{K}\)</span> 和 <span class="math inline">\(\lambda\)</span> 沒有關係。而我們之前所說的 <span class="math inline">\(\hat{ \mathbf{f}} = \mathbf{S_\lambda y}\)</span> 就是下面這條式子的解：</p>
+<p><span class="math display">\[\min_{\mathbf{f}} (\mathbf{y-f})^T (\mathbf{y-f})+ \lambda \mathbf{f}^T \mathbf{K} \mathbf{f}\]</span></p>
+<p>其中 <span class="math inline">\(\mathbf{K}\)</span> 是所謂<strong>懲罰矩陣</strong>，而我們再對 <span class="math inline">\(\mathbf{S_\lambda y}\)</span> 做特徵值分解，可以得到下列形式：</p>
+<p><span class="math display">\[\mathbf{S_\lambda y} = \sum_{k=1}^N \rho_k(\lambda)\mathbf{u}_k\mathbf{u}_k^T \]</span></p>
+<p><span class="math display">\[\rho_k(\lambda)= \frac{1}{1+\lambda d_k}\]</span></p>
+<p>其中， <span class="math inline">\(d_k\)</span> 是 <span class="math inline">\(\mathbf{K}\)</span> 對應的特徵值、<span class="math inline">\(\mathbf{u}_k\)</span> 則是對應的特徵向量。</p>
+<p>(其餘特徵值相關內容可見課本 p154 ~ p156)</p>
+</section>
+<section id="lambda-的選擇" class="level3">
+<h3 class="anchored" data-anchor-id="lambda-的選擇"><span class="math inline">\(\lambda\)</span> 的選擇</h3>
+<p>延伸閱讀：https://esl.hohoweiya.xyz/notes/spline/sim-5-9/index.html</p>
+<p>在進行 smoothing spline 的配適時，我們還要去找到一個最適的 <span class="math inline">\(\lambda\)</span> 我們希望可以找到一個 <span class="math inline">\(\lambda\)</span> 使得 cross-validated RSS 之值最小：(LOO(leave-one-out CV a.k.a n-fold CV))</p>
+<p><span class="math display">\[RSS_{cv}(\lambda) = \sum_{i=1}^n(y_i-\hat{f}_\lambda^{(-i)}(x_i))^2= \sum_{i=1}^n [\frac{y_i-\hat{f}_\lambda(x_i)}{1-\{\mathbf{S_\lambda}\}_{ii}}]^2\]</span></p>
+<p>其中 <span class="math inline">\(\hat{f}_\lambda^{(-i)}(x_i)\)</span> 為移除第 <span class="math inline">\(i\)</span> 個樣本點(of training set)後執行 <span class="math inline">\(LOO\)</span> 代入 <span class="math inline">\(x_i\)</span> 配適值。</p>
+<p>除了上方傳統的 LOOCV 之外，我們還可以引入 Generalized CV (GCV) 同樣也可以用以找尋最佳的 <span class="math inline">\(\lambda\)</span> ，GCV 的好處是在計算上較LOOCV更加便利及快速。</p>
+<p><span class="math display">\[GCV =  \sum_{i=1}^n [\frac{y_i-\hat{f}_\lambda(x_i)}{1-\frac{1}{n}trace(\mathbf{S_\lambda})}]^2\]</span></p>
+</section>
+<section id="nonparametric-logistic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="nonparametric-logistic-regression">Nonparametric Logistic Regression</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-right">Powered by <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" class="img-fluid" alt="Quarto" width="65"></a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
