@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - Sec*.*.ipynb
+    - Sec*.*.qmd
 
 website:
   title: "統計學習理論"
