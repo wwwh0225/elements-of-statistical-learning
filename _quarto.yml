@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: doc
   render:
     - Sec*.*.ipynb
     - Sec*.*.qmd
@@ -26,6 +26,7 @@ website:
     search: true    
     contents:
       - section: "Chapter 2."
+        href: Ch4/Sec4.2.ipynb
         contents:
         - href: Ch2/Sec2.3.ipynb
           text: "2.3 Two Simple Approaches to Prediction"
