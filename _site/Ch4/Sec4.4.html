@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.245">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>統計學習理論 – sec4.4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">統計學習理論</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/statlearn.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">統計學習理論</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Chapter 2.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch2/Sec2.3.html" class="sidebar-item-text sidebar-link">2.3 Two Simple Approaches to Prediction</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Chapter 4.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch4/Sec4.2.html" class="sidebar-item-text sidebar-link">4.2 Linear Regression of an Indicator Matrix</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch4/Sec4.3.html" class="sidebar-item-text sidebar-link">4.3 Linear Discriminant Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch4/Sec4.4.html" class="sidebar-item-text sidebar-link active">4.4 Logistic Regression</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Chapter 5.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.1.html" class="sidebar-item-text sidebar-link">5.1 Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.2.html" class="sidebar-item-text sidebar-link">5.2 Piecewise Polynomials and Spl</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.4.html" class="sidebar-item-text sidebar-link">5.4 Smoothing Splines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch5/Sec5.5.html" class="sidebar-item-text sidebar-link">5.5 Automatic Selection of the Smoothing Parameters</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Chapter 14.</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Ch14/Sec14.5.html" class="sidebar-item-text sidebar-link">14.5 Principal Components, Curves and Surfaces</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link active" data-scroll-target="#logistic-regression">4.4 Logistic Regression</a>
+  <ul class="collapse">
+  <li><a href="#配適-logistic-regression-的參數" id="toc-配適-logistic-regression-的參數" class="nav-link" data-scroll-target="#配適-logistic-regression-的參數">配適 Logistic Regression 的參數</a></li>
+  <li><a href="#一個-k2-的例子從-x-in-mathbbr-到-x-in-mathbbrp-from-ex.-4.5" id="toc-一個-k2-的例子從-x-in-mathbbr-到-x-in-mathbbrp-from-ex.-4.5" class="nav-link" data-scroll-target="#一個-k2-的例子從-x-in-mathbbr-到-x-in-mathbbrp-from-ex.-4.5">一個 <span class="math inline">\(K=2\)</span> 的例子，從 <span class="math inline">\(x \in \mathbb{R}\)</span> 到 <span class="math inline">\(x \in \mathbb{R}^p\)</span> (from Ex. 4.5)</a></li>
+  <li><a href="#example-south-african-heart-disease" id="toc-example-south-african-heart-disease" class="nav-link" data-scroll-target="#example-south-african-heart-disease">Example: South African Heart Disease</a></li>
+  <li><a href="#logistic-v.s.-lda" id="toc-logistic-v.s.-lda" class="nav-link" data-scroll-target="#logistic-v.s.-lda">Logistic v.s. LDA</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/wwwh0225/elements-of-statistical-learning/blob/main/Ch4/Sec4.4.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/wwwh0225/elements-of-statistical-learning/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<p><a href="https://colab.research.google.com/github/wwwh0225/elements-of-statistical-learning/blob/main/Ch4.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<section id="logistic-regression" class="level1">
+<h1>4.4 Logistic Regression</h1>
+<p>羅吉斯迴歸(Logistic Regression)是針對 <span class="math inline">\(K\)</span> 個類別的後驗機率做一個線性的的模型，而跟一般線性迴歸不同的地方是在於，羅吉斯迴歸透過對數的轉換將機率的取值保留在<span class="math inline">\([0,1]\)</span>之間。若我們的資料有 <span class="math inline">\(K\)</span> 類別，則羅吉斯回歸透過建立 <span class="math inline">\(K-1\)</span> 個 <strong>log-odds</strong> 來建構我們所要的模型，少的那一個類別就拿來作為對照組之用。 以 <span class="math inline">\(K\)</span> 作為基準，Logistic Regression 會建立這些模型關係：</p>
+<p><span class="math display">\[\begin{aligned}
+\ln \frac{P(G=1|X=x)}{P(G=K|X=x)} &amp;= \beta_{10}+\beta_1^Tx\\
+\ln \frac{P(G=2|X=x)}{P(G=K|X=x)} &amp;= \beta_{20}+\beta_2^Tx \\
+&amp; \vdots \\
+\ln \frac{P(G=K-1|X=x)}{P(G=K|X=x)} &amp;= \beta_{(K-1)0}+\beta_{K-1}^Tx
+\end{aligned}\]</span></p>
+<p>我們可以對這些式子取指數回來，可得：</p>
+<p><span class="math display">\[P(G=l|X=x) =P(G=K|X=x) e^{\beta_{l0}+\beta_l^Tx}, l=1,2,\cdots,N-1\]</span></p>
+<p>又</p>
+<p><span class="math display">\[\begin{aligned}
+P(G=K|X=x) &amp;= 1-\sum_{l=1}^{K-1}P(G=l|X=x)\\&amp;=1-P(G=K|X=x)\sum_{l=1}^{K-1}e^{\beta_{l0}+\beta_l^Tx}
+\end{aligned} \]</span></p>
+<p>故可求解出：</p>
+<p><span class="math display">\[P(G=K|X=x) = \frac{1}{1+\sum_{l=1}^{K-1}e^{\beta_{l0}+\beta_l^Tx} } \]</span> 以及,</p>
+<p><span class="math display">\[P(G=k|X=x) = \frac{e^{\beta_{k0}+\beta_k^Tx} }{1+\sum_{l=1}^{K-1}e^{\beta_{l0}+\beta_l^Tx} }\]</span></p>
+<p>若我們簡化表示，將這些參數定義為：</p>
+<p><span class="math display">\[\theta = \{\beta_{10},\beta_1^T,\cdots,\beta_{(K-1)0},\beta_{(K-1)}^T  \}\]</span> 則類別<span class="math inline">\(k\)</span>機率可以表示成： <span class="math inline">\(P(G=k|X=x)=p_k(x;\theta)\)</span></p>
+<section id="配適-logistic-regression-的參數" class="level3">
+<h3 class="anchored" data-anchor-id="配適-logistic-regression-的參數">配適 Logistic Regression 的參數</h3>
+<p>在共有 <span class="math inline">\(K\)</span> 類的資料中，可以把資料想成是從<strong>多項分配(multinomial)</strong>取出來的。因此 <strong>likelihood</strong> 可以想成是：</p>
+<p><span class="math display">\[L = \prod _{i=1}^Np_{g_i}(x_i)\]</span></p>
+<p>(只有其中一項的指數會是 <span class="math inline">\(1\)</span> ，其他都是 <span class="math inline">\(0\)</span> ) 將之轉為 <strong>log-likelihood</strong>：</p>
+<p><span class="math display">\[l=\sum _{i=1}^N \ln p_{g_i}(x_i)\]</span></p>
+<p>若我們只先看 <span class="math inline">\(K=2\)</span> 的情形，則：(可參考課本4.4.1)</p>
+<p><span class="math display">\[l(\beta) = \sum_{i=1}^N\{y_i\beta^Tx_i -\ln(1+e^{\beta^Tx_i})  \}\]</span></p>
+<p>我們求解 log-likelihood 的極值，另一階導數為0：</p>
+<p><span class="math display">\[\frac{\partial l(\beta)}{\partial \beta} = \sum_{i=1}^N x_i(y_i-p(x_i;\beta))=0\]</span></p>
+<p>其中 <span class="math inline">\(p(x_i;\beta) = \frac{e^{\beta^Tx}}{1+e^{\beta^Tx}}\)</span> 。</p>
+<p>我們將一階條件，擴寫成矩陣形式：</p>
+<p><span class="math display">\[\frac{\partial l(\beta)}{\partial \beta} = \mathbf{X}^T(y-p)\]</span></p>
+<p>二階條件的 <strong>Hessian matrix</strong> 如下：</p>
+<p><span class="math display">\[\frac{\partial^2 l(\beta)}{\partial \beta\beta^T} = -\mathbf{X}^T\mathbf{WX}\]</span></p>
+<ul>
+<li> 是第 <span class="math inline">\(i\)</span> 個元素是 <span class="math inline">\(p(x_i;\beta^{old})(1-p(x_i;\beta^{old}))\)</span> 的對角矩陣。</li>
+</ul>
+<p>由於此問題的一階條件沒有 closed-form，因此我們使用<strong>牛頓法</strong>找根：</p>
+<p><span class="math display">\[\begin{aligned}
+\beta^{new} &amp;= \beta^{old} + (\mathbf{W}^T\mathbf{WX})^{-1}\mathbf{X}^T(\mathbf{y}-\mathbf{p})\\
+&amp;= (\mathbf{W}^T\mathbf{WX})^{-1}\mathbf{X}^T\mathbf{W}(\mathbf{X}\beta^{old}+\mathbf{W}^{-1}(\mathbf{y}-\mathbf{p}))\\
+&amp;=(\mathbf{W}^T\mathbf{WX})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{z}
+\end{aligned}\]</span></p>
+<p>觀察上式，我們令 <span class="math inline">\(\mathbf{z}=\mathbf{X}\beta^{old}+\mathbf{W}^{-1}(\mathbf{y}-\mathbf{p})\)</span>，則我們每進行一次迭代，都是彷彿在進行一次 <em>weighted least squared</em>，故稱之為 <strong>iteratively reweighted least squared(IRLS)</strong>。在迭代的過程中，我們可以選擇從 <span class="math inline">\(\beta=0\)</span> 開始。</p>
+<p><span class="math display">\[\beta^{new} \leftarrow \mathop{\arg\min}_\beta (\mathbf{z}-\mathbf{X}\beta)^T\mathbf{W}(\mathbf{z}-\mathbf{X}\beta)\]</span></p>
+</section>
+<section id="一個-k2-的例子從-x-in-mathbbr-到-x-in-mathbbrp-from-ex.-4.5" class="level3">
+<h3 class="anchored" data-anchor-id="一個-k2-的例子從-x-in-mathbbr-到-x-in-mathbbrp-from-ex.-4.5">一個 <span class="math inline">\(K=2\)</span> 的例子，從 <span class="math inline">\(x \in \mathbb{R}\)</span> 到 <span class="math inline">\(x \in \mathbb{R}^p\)</span> (from Ex. 4.5)</h3>
+<p><img src="https://esl.hohoweiya.xyz/img/04/fig4.16.png" class="img-fluid"></p>
+<p><strong>Consider a two-class logistic regression problem with <span class="math inline">\(x \in \mathbb{R}\)</span>. Characterize the maximum-likelihood estimates of the slope and intercept parameter if the sample <span class="math inline">\(x_i\)</span> for the two classes are separated by a point <span class="math inline">\(x \in \mathbb{R}\)</span>. Generalize this result to (a) <span class="math inline">\(x \in \mathbb{R}^p\)</span> (see Figure 4.16), and (b) more than two classes.</strong></p>
+<p>在先前的討論中，我們知道當 <span class="math inline">\(K=2\)</span> 時，log-likelihood function 為</p>
+<p><span class="math display">\[l(\beta) = \sum_{i=1}^N\{y_i\beta^Tx_i -\ln(1+e^{\beta^Tx_i})  \}\]</span></p>
+<p>而若 <span class="math inline">\(x \in \mathbb{R}\)</span>(一維)，則</p>
+<p><span class="math display">\[y_i =\left\{\begin{matrix}
+0,\ x_i \leq x_0\\
+1,\ x_i &gt; x_0
+\end{matrix}\right.\]</span></p>
+<p>我們考慮最基本的一維羅吉斯回歸模型，的對數概似函數：</p>
+<p><span class="math display">\[l(\beta) = \sum_{i=1}^N\{y_i\beta^Tx_i -\ln(1+e^{\beta^Tx_i})  \}\]</span></p>
+<p>故</p>
+<p><span class="math display">\[\begin{aligned}
+l(\beta) &amp;= \sum_{i=1}^N\{y_i(\beta_0+\beta_1x_i) -\ln(1+e^{(\beta_0+\beta_1x_i)})  \} \\
+&amp;=\sum_{y_i=0}[-\ln(1+e^{(\beta_0+\beta_1x_i)})]+\sum_{y_i=1}[(\beta_0+\beta_1x_i)-\ln(1+e^{(\beta_0+\beta_1x_i)})]
+\end{aligned}\]</span></p>
+<p>若我們想要 <strong>maximize log-likelihood</strong>，很明顯地，當 <span class="math inline">\(\beta \rightarrow \infty\)</span> 時就會發散，這導致我們無法找到一個 closed-form 的解。</p>
+<p>但很直觀地，當<span class="math inline">\(x \in \mathbb{R}\)</span>，由於資料只有一維，那我們在 x 軸上找到 <span class="math inline">\(x=x_0\)</span> ，並在此處畫上一條垂直於 x 軸的線，這樣就能夠明確地劃分出兩個分類。</p>
+<ul>
+<li>當 <span class="math inline">\(x \in \mathbb{R}^p\)</span> 時，該如何處理呢？(p&gt;1)</li>
+</ul>
+<p>我們透過一樣的邏輯擴展 <span class="math inline">\(l(\beta)\)</span> 用矩陣向量表示：</p>
+<p><span class="math display">\[\begin{aligned}
+l(\beta) &amp;= \sum_{i=1}^N\{y_i\beta^Tx_i -\ln(1+e^{\beta^Tx_i})  \} \\
+&amp;=\sum_{y_i=0}[-\ln(1+e^{\beta^Tx_i})]+\sum_{y_i=1}[\beta^Tx_i-\ln(1+e^{\beta^Tx_i})]\end{aligned}\]</span></p>
+<p>同樣地，我們同樣會發現 <span class="math inline">\(l(\beta)\)</span> 會發散。</p>
+<ul>
+<li>當 <span class="math inline">\(K&gt;2\)</span> 時，要如何處理呢？</li>
+</ul>
+<p>直觀上來說，當 <span class="math inline">\(K&gt;2\)</span> 則需要超過一個超平面來協助我們分類，我們同樣能寫出這種情況的 log-likelihood function：</p>
+<p><span class="math display">\[\begin{aligned}
+l(\beta) &amp;= \sum_{i=1}^N [\sum_{k=1}^{K-1}\mathbf{1}_{y_i=k} \beta_k^Tx_i-\ln(1+\sum_{l=1}^{K-1}e^{\beta_l^Tx_i}]\\
+&amp;=\sum_{k=1}^{K-1} \sum_{g_k}[\beta_k^Tx_i-\ln(1+\sum_{l=1}^{K-1}\beta_l^Tx_i) ]
++\sum_{g_k}[-\ln(1+\sum_{l=1}^{K-1}e^{\beta_l^Tx_i})]
+\end{aligned}\]</span></p>
+<p>而這條式子同樣也找不到 的 closed-form。</p>
+</section>
+<section id="example-south-african-heart-disease" class="level3">
+<h3 class="anchored" data-anchor-id="example-south-african-heart-disease">Example: South African Heart Disease</h3>
+</section>
+<section id="logistic-v.s.-lda" class="level3">
+<h3 class="anchored" data-anchor-id="logistic-v.s.-lda">Logistic v.s. LDA</h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-right">Powered by <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" class="img-fluid" alt="Quarto" width="65"></a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
