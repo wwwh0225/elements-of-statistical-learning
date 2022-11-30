@@ -34,7 +34,7 @@ website:
       - section: "Chapter 4."
         contents:
         - href: Ch4/Sec4.0.ipynb
-          text: "Overview"
+          text: "4.0 Overview"
         - href: Ch4/Sec4.2.ipynb
           text: "4.2 Linear Regression of an Indicator Matrix"
         - href: Ch4/Sec4.3.ipynb
