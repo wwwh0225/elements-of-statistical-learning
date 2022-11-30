@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Eric Huang">
+<meta name="dcterms.date" content="2022-11-30">
 
-<title>統計學習理論 – sec4.2</title>
+<title>統計學習理論 - 4.2 Linear Regression of an Indicator Matrix</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">統計學習理論</h1>
+      <h1 class="quarto-secondary-nav-title">4.2 Linear Regression of an Indicator Matrix</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -190,23 +192,42 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#linear-regression-of-an-indicator-matrix" id="toc-linear-regression-of-an-indicator-matrix" class="nav-link active" data-scroll-target="#linear-regression-of-an-indicator-matrix">4.2 Linear Regression of an Indicator Matrix</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/wwwh0225/elements-of-statistical-learning/blob/main/Ch4/Sec4.2.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/wwwh0225/elements-of-statistical-learning/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">4.2 Linear Regression of an Indicator Matrix</h1>
+</div>
 
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eric Huang </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 30, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
 
 <p><a href="https://colab.research.google.com/github/wwwh0225/elements-of-statistical-learning/blob/main/Ch4.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="linear-regression-of-an-indicator-matrix" class="level1">
-<h1>4.2 Linear Regression of an Indicator Matrix</h1>
-<p>若我們說， <span class="math inline">\(\mathcal{G}\)</span> 有 <span class="math inline">\(K\)</span> 個類別，為了表示該筆資料是何種類別，我們可以建立一個 <span class="math inline">\(Y\)</span> 矩陣, <span class="math inline">\(Y=(Y_1,...,Y_k)_{N \times K}\)</span>，也就是說 <span class="math inline">\(Y\)</span> 矩陣中有 <span class="math inline">\(N\)</span> 個 <span class="math inline">\(K\)</span> 維的 row vectors。而根據線性迴歸模型，我們可得對 <span class="math inline">\(Y\)</span> 的估計為：</p>
+<p>若我們說， <span class="math inline">\(\mathcal{G}\)</span> 有 <span class="math inline">\(K\)</span> 個類別，為了表示該筆資料是何種類別，我們可以建立一個 <span class="math inline">\(Y\)</span> 矩陣， <span class="math inline">\(Y=(Y_1,...,Y_k)_{N \times K}\)</span>。也就是說 <span class="math inline">\(Y\)</span> 矩陣中有 <span class="math inline">\(N\)</span> 個 <span class="math inline">\(K\)</span> 維的 row vectors，若第 <span class="math inline">\(n\)</span> 筆資料屬於類別 <span class="math inline">\(k\)</span> 則 <span class="math inline">\(row(Y)=e_k\)</span>，<span class="math inline">\(e_k\)</span> 為第 <span class="math inline">\(k\)</span> 個標準基底。根據線性迴歸模型，我們可得對 <span class="math inline">\(Y\)</span> 的估計為：</p>
 <p><span class="math display">\[ \hat{Y}  = X(X^TX)^{-1}X^TY=X \hat{B} \]</span></p>
 <p><span class="math inline">\(B_{(p+1)\times K}\)</span>： <span class="math inline">\(p\)</span> 個 inputs 然後加上截距項。</p>
 <p>或者是從另外一個觀點，也就是我們希望極小化 <span class="math inline">\(\hat{y}\)</span> 跟 <span class="math inline">\(y\)</span> 的距離。</p>
@@ -216,7 +237,6 @@ ul.task-list li input[type="checkbox"] {
 <p>#模擬Fig. 4.3 https://esl.hohoweiya.xyz/notes/LDA/sim-4-3/index.html</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
