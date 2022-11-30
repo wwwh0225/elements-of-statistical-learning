@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Eric Huang, Kevin Hong">
-<meta name="dcterms.date" content="2022-11-12">
 
-<title>統計學習理論 - 14.5.1 Principle Components 主成分(分析)</title>
+<title>統計學習理論 – sec14.5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">14.5.1 Principle Components 主成分(分析)</h1>
+      <h1 class="quarto-secondary-nav-title">統計學習理論</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -99,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Chapter 2.</a>
+            <a href="../Ch4/Sec4.2.html" class="sidebar-item-text sidebar-link">Chapter 2.</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -191,51 +189,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#概念" id="toc-概念" class="nav-link active" data-scroll-target="#概念">1. 概念</a></li>
+  <li><a href="#principle-components-主成分分析" id="toc-principle-components-主成分分析" class="nav-link active" data-scroll-target="#principle-components-主成分分析">14.5.1 Principle Components 主成分(分析)</a>
+  <ul class="collapse">
+  <li><a href="#概念" id="toc-概念" class="nav-link" data-scroll-target="#概念">1. 概念</a></li>
   <li><a href="#推導-14.51-14.52" id="toc-推導-14.51-14.52" class="nav-link" data-scroll-target="#推導-14.51-14.52">2. 推導 (14.51) (14.52)</a></li>
   <li><a href="#推導14.53-14.54解出v_q" id="toc-推導14.53-14.54解出v_q" class="nav-link" data-scroll-target="#推導14.53-14.54解出v_q">3. 推導(14.53) (14.54)：解出<span class="math inline">\(V_q\)</span></a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/wwwh0225/elements-of-statistical-learning/blob/main/Ch14/Sec14.5.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/wwwh0225/elements-of-statistical-learning/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block">14.5.1 Principle Components 主成分(分析)</h1>
-<p class="subtitle lead">none</p>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Eric Huang, Kevin Hong </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 12, 2022</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-<div>
-  <div class="abstract">
-    <div class="abstract-title">Abstract</div>
-    none
-  </div>
-</div>
-
-</header>
-
+<section id="principle-components-主成分分析" class="level1">
+<h1>14.5.1 Principle Components 主成分(分析)</h1>
 <section id="概念" class="level3">
 <h3 class="anchored" data-anchor-id="概念">1. 概念</h3>
 <blockquote class="blockquote">
@@ -323,6 +292,7 @@ S = \{\mu| \mu=\bar{x}+\sum_{i=1}^{q}a_iv_i\}
 <p><span class="math inline">\(\mathrm{\square}\)</span></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
